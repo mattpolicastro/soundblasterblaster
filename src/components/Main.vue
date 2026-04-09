@@ -8,7 +8,7 @@
     <ul>
       <li><a href="https://github.com/mattpolicastro/soundblasterblaster" target="_blank" rel="noopener">GitHub</a></li>
       <li><a href="https://mattpolicastro.com" target="_blank" rel="noopener">Website</a></li>
-      <li><a href="https://twitter.com/mattpolicastro" target="_blank" rel="noopener">Twitter</a></li>
+      <li><a href="https://bsky.app/profile/mattpolicastro.com" target="_blank" rel="noopener">Bluesky</a></li>
     </ul>
   </div>
 </template>
