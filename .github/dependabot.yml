@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # Keep npm dependencies (Vue, Vite, @vitejs/plugin-vue, transitive tree) current.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+
+  # Keep the actions used in .github/workflows/ current.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
