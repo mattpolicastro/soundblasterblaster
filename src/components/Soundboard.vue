@@ -13,31 +13,25 @@
 
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
 
-module.exports = {
-  data() {
-    return {
-      sounds: []
-    };
-  },
-  // The `importSounds` workaround for sound file loading inspired by: https://stackoverflow.com/questions/54095215/how-to-get-all-the-image-files-in-a-directory-using-vue-js-nuxt-js
-  mounted() {
-    this.importSounds(require.context('../assets/sounds', true, /\.mp3$/));
-  },
-  methods: {
-    importSounds(r) {
-      r.keys().forEach(key => (
-        this.sounds.push({ pathLong: r(key), pathShort: key})
-      ));
-    },
-    playSound (sound) {
-      if (sound) {
-        var audio = new Audio(sound);
-        audio.play();
-      }
-    }
-  }
+// Vite equivalent of require.context('../assets/sounds', true, /\.mp3$/)
+const modules = import.meta.glob('../assets/sounds/*.mp3', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+})
+
+const sounds = ref(
+  Object.entries(modules).map(([path, url]) => ({
+    pathLong: url,
+    pathShort: path.replace(/^.*\/assets\/sounds\//, './'),
+  }))
+)
+
+function playSound(src) {
+  if (src) new Audio(src).play().catch(() => {})
 }
 </script>
 
